@@ -66,10 +66,9 @@ public class Pm25OpenHelper extends SQLiteOpenHelper {
             + "city_id text, "
             + "city_name text, "
             + "update text, "
-            + "loc text, "
             + "aqi integer, "
             + "pm25 real, "
-            + "pm10 real"
+            + "pm10 real, "
             + "so2 real, "
             + "no2 real, "
             + "co real, "
@@ -77,7 +76,7 @@ public class Pm25OpenHelper extends SQLiteOpenHelper {
             + "qlty real, "
             + "tmp real, "
             + "hum real, "
-            + "code text)";
+            + "code integer)";
 
     public Pm25OpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

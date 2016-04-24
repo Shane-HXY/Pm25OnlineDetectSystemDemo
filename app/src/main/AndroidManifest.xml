@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,23 +23,34 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="b4d47ba9fa4a03ea3b323386756d409c" />
+
         <activity android:name=".activity.FrontActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.default_searchable" android:value=".activity.SearchActivity" />
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".activity.SearchActivity" />
         </activity>
 
-        <activity android:name=".activity.SearchActivity" android:parentActivityName=".activity.FrontActivity">
+        <activity
+            android:name=".activity.WeatherItemActivity"
+            android:parentActivityName=".activity.FrontActivity" />
+
+        <activity
+            android:name=".activity.SearchActivity"
+            android:parentActivityName=".activity.FrontActivity">
             <!-- meta tag and intent filter go into results activity -->
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".activity.ListActivity" />
         <activity android:name=".activity.MapActivity" />

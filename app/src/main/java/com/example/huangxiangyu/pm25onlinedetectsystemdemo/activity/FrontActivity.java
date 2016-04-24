@@ -9,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,6 +18,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.huangxiangyu.pm25onlinedetectsystemdemo.R;
+import com.example.huangxiangyu.pm25onlinedetectsystemdemo.RecyclerViewAdapter;
+import com.example.huangxiangyu.pm25onlinedetectsystemdemo.model.WeatherData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by huangxiangyu on 16/4/19.
@@ -25,6 +32,10 @@ public class FrontActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private RecyclerView recyclerView;
+    private List<WeatherData> weatherDataList;
+    private RecyclerViewAdapter recyclerViewAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +78,28 @@ public class FrontActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
 
-        
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+        initWeatherData();
+        recyclerViewAdapter = new RecyclerViewAdapter(weatherDataList, FrontActivity.this);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(recyclerViewAdapter);
+    }
+
+    private void initWeatherData() {
+        // TODO:获取基本数据信息
+        weatherDataList = new ArrayList<>();
+
+//        weatherDataList.add(new WeatherData("郑州", "19:00", 177, 56, 40, 4, 3, 3, 4, "空气质量中", 23, 50));
+//        weatherDataList.add(new WeatherData("苏州", "19:00", 177, 56, 40, 4, 3, 3, 4, "空气质量中", 23, 50));
+//        weatherDataList.add(new WeatherData("温州", "19:00", 177, 56, 40, 4, 3, 3, 4, "空气质量中", 23, 50));
+//        weatherDataList.add(new WeatherData("杭州", "19:00", 177, 56, 40, 4, 3, 3, 4, "空气质量中", 23, 50));
+//        weatherDataList.add(new WeatherData("南京", "19:00", 177, 56, 40, 4, 3, 3, 4, "空气质量中", 23, 50));
+//        weatherDataList.add(new WeatherData("泰州", "19:00", 177, 56, 40, 4, 3, 3, 4, "空气质量中", 23, 50));
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
