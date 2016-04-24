@@ -8,6 +8,7 @@ import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.MapView;
 import com.example.huangxiangyu.pm25onlinedetectsystemdemo.R;
 
+
 /**
  * Created by huangxiangyu on 16/4/20.
  * In Pm25OnlineDetectSystemDemo
@@ -15,6 +16,8 @@ import com.example.huangxiangyu.pm25onlinedetectsystemdemo.R;
 public class MapActivity extends Activity {
     private MapView mapView;
     private AMap aMap;
+
+    private static Boolean isExit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,4 +72,5 @@ public class MapActivity extends Activity {
         super.onDestroy();
         mapView.onDestroy();
     }
+
 }

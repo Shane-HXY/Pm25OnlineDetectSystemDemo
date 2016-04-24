@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class FrontActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<WeatherData> weatherDataList;
     private RecyclerViewAdapter recyclerViewAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,4 +152,5 @@ public class FrontActivity extends AppCompatActivity {
         return true;
 
     }
+
 }
