@@ -185,6 +185,7 @@ public class Pm25DB {
         if (user != null) {
             ContentValues contentValues = new ContentValues();
             contentValues.put("user_name", user.getUserName());
+            contentValues.put("user_password", user.getPassword());
             contentValues.put("email", user.getEmail());
             contentValues.put("alarm", user.getAlarm());
             db.insert("User", null, contentValues);
@@ -201,6 +202,7 @@ public class Pm25DB {
                 User user = new User();
                 user.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 user.setUserName(cursor.getString(cursor.getColumnIndex("user_name")));
+                user.setPassword(cursor.getString(cursor.getColumnIndex("user_password")));
                 user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
                 user.setAlarm(cursor.getInt(cursor.getColumnIndex("alarm")));
             } while (cursor.moveToNext());

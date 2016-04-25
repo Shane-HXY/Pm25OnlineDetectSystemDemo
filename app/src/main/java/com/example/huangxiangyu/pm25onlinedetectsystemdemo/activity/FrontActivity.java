@@ -16,6 +16,9 @@ import android.support.v7.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.huangxiangyu.pm25onlinedetectsystemdemo.R;
@@ -80,6 +83,19 @@ public class FrontActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
 
+        // Navigation view
+        View headerView = navigationView.getHeaderView(0);
+        ImageView userHeader = (ImageView) headerView.findViewById(R.id.user_header);
+        TextView userName = (TextView) headerView.findViewById(R.id.user_name_show);
+        userHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FrontActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Main layout
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);

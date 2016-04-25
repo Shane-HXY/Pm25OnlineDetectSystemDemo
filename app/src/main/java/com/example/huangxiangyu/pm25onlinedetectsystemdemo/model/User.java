@@ -1,5 +1,6 @@
 package com.example.huangxiangyu.pm25onlinedetectsystemdemo.model;
 
+
 /**
  * Created by huangxiangyu on 16/4/18.
  * In Pm25OnlineDetectSystemDemo
@@ -7,6 +8,7 @@ package com.example.huangxiangyu.pm25onlinedetectsystemdemo.model;
 public class User {
     private int id;
     private String userName;
+    private String password;
     private String email;
     private int alarm;
 
@@ -24,6 +26,14 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

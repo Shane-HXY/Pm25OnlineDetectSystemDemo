@@ -54,6 +54,7 @@ public class Pm25OpenHelper extends SQLiteOpenHelper {
     public static final String CREATE_USER = "create table User ("
             + "id integer primary key autoincrement, "
             + "user_name text, "
+            + "user_password text, "
             + "email text, "
             + "alarm integer)";
 
@@ -89,7 +90,7 @@ public class Pm25OpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_CITY);        //创建City表
         sqLiteDatabase.execSQL(CREATE_COUNTY);      //创建County表
         sqLiteDatabase.execSQL(CREATE_NODE);        //创建Node表
-        sqLiteDatabase.execSQL(CREATE_USER);        //创建User表
+        //sqLiteDatabase.execSQL(CREATE_USER);        //创建User表  考虑再三决定不添加User表
         sqLiteDatabase.execSQL(CREATE_WEATHERDATA); //创建WeatherData表
     }
 

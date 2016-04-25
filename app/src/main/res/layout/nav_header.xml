@@ -16,17 +16,19 @@
         android:orientation="vertical">
 
         <com.example.huangxiangyu.pm25onlinedetectsystemdemo.widget.RoundImageView
+            android:id="@+id/user_header"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:src="@drawable/chuishui" />
 
         <TextView
+            android:id="@+id/user_name_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:padding="3dp"
-            android:text="dashabi" />
+            android:text="username" />
     </LinearLayout>
 
 

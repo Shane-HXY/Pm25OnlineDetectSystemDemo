@@ -57,6 +57,7 @@
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.UserActivity" />
+        <activity android:name=".activity.LoginActivity" />
     </application>
 
 </manifest>
