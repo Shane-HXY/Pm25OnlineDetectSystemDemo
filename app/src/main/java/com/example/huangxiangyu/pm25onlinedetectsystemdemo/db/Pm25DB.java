@@ -186,8 +186,6 @@ public class Pm25DB {
             ContentValues contentValues = new ContentValues();
             contentValues.put("user_name", user.getUserName());
             contentValues.put("user_password", user.getPassword());
-            contentValues.put("email", user.getEmail());
-            contentValues.put("alarm", user.getAlarm());
             db.insert("User", null, contentValues);
         }
     }
@@ -203,8 +201,6 @@ public class Pm25DB {
                 user.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 user.setUserName(cursor.getString(cursor.getColumnIndex("user_name")));
                 user.setPassword(cursor.getString(cursor.getColumnIndex("user_password")));
-                user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-                user.setAlarm(cursor.getInt(cursor.getColumnIndex("alarm")));
             } while (cursor.moveToNext());
         }
         return list;
@@ -226,7 +222,7 @@ public class Pm25DB {
             contentValues.put("no2", weatherData.getNo2());
             contentValues.put("co", weatherData.getCo());
             contentValues.put("o3", weatherData.getO3());
-            contentValues.put("qlty", weatherData.getO3());
+            contentValues.put("quality", weatherData.getQuality());
             contentValues.put("tmp", weatherData.getTmp());
             contentValues.put("hum", weatherData.getHum());
             contentValues.put("code", weatherData.getCode());
@@ -253,7 +249,7 @@ public class Pm25DB {
                 weatherData.setNo2(cursor.getDouble(cursor.getColumnIndex("no2")));
                 weatherData.setCo(cursor.getDouble(cursor.getColumnIndex("co")));
                 weatherData.setO3(cursor.getDouble(cursor.getColumnIndex("o3")));
-                weatherData.setQlty(cursor.getString(cursor.getColumnIndex("qlty")));
+                weatherData.setQuality(cursor.getString(cursor.getColumnIndex("quality")));
                 weatherData.setTmp(cursor.getDouble(cursor.getColumnIndex("tmp")));
                 weatherData.setHum(cursor.getDouble(cursor.getColumnIndex("hum")));
                 weatherData.setCode(cursor.getInt(cursor.getColumnIndex("code")));

@@ -30,7 +30,7 @@ public class WeatherData implements Serializable {
 
     private double o3;       //o3指数
 
-    private String qlty;    //空气质量类别
+    private String quality;    //空气质量类别
 
     private double tmp;        //当前温度
 
@@ -126,13 +126,14 @@ public class WeatherData implements Serializable {
         this.o3 = o3;
     }
 
-    public String getQlty() {
-        return qlty;
+    public String getQuality() {
+        return quality;
     }
 
-    public void setQlty(String qlty) {
-        this.qlty = qlty;
+    public void setQuality(String quality) {
+        this.quality = quality;
     }
+
 
     public double getTmp() {
         return tmp;
@@ -157,18 +158,5 @@ public class WeatherData implements Serializable {
     public void setCode(int code) {
         this.code = code;
     }
-    //    public WeatherData(String cityName, String update, int aqi, float pm25, float pm10, float so2, float no2, float co, float o3, String qlty, float tmp, float hum) {
-//        this.cityName = cityName;
-//        this.update = update;
-//        this.aqi = aqi;
-//        this.pm25 = pm25;
-//        this.pm10 = pm10;
-//        this.so2 = so2;
-//        this.no2 = no2;
-//        this.co = co;
-//        this.o3 = o3;
-//        this.qlty = qlty;
-//        this.tmp = tmp;
-//        this.hum = hum;
-//    }
+
 }

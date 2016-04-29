@@ -12,6 +12,15 @@ public class User {
     private String email;
     private int alarm;
 
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }

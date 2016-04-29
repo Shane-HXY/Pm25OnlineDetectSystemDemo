@@ -3,6 +3,7 @@ package com.example.huangxiangyu.pm25onlinedetectsystemdemo.activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -17,12 +18,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.huangxiangyu.pm25onlinedetectsystemdemo.R;
 import com.example.huangxiangyu.pm25onlinedetectsystemdemo.RecyclerViewAdapter;
+import com.example.huangxiangyu.pm25onlinedetectsystemdemo.db.Pm25DB;
 import com.example.huangxiangyu.pm25onlinedetectsystemdemo.model.WeatherData;
 
 import java.util.ArrayList;
@@ -40,11 +43,16 @@ public class FrontActivity extends AppCompatActivity {
     private List<WeatherData> weatherDataList;
     private RecyclerViewAdapter recyclerViewAdapter;
 
+    private Pm25DB pm25DB;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_act);
+        pm25DB = Pm25DB.getInstance(this);
+
+        username = getIntent().getStringExtra("user_name");
 
         // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -54,17 +62,11 @@ public class FrontActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-//                    case R.id.action_search:
-//                        Intent intent = new Intent(FrontActivity.this, SearchActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                        startActivity(intent);
-//                        break;
                     case R.id.action_about:
                         Toast.makeText(FrontActivity.this, "!!!!", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
-
                 }
                 return false;
             }
@@ -87,22 +89,33 @@ public class FrontActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         ImageView userHeader = (ImageView) headerView.findViewById(R.id.user_header);
         TextView userName = (TextView) headerView.findViewById(R.id.user_name_show);
+        ImageButton exit = (ImageButton) headerView.findViewById(R.id.exit);
         userHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FrontActivity.this, UserActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FrontActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
+        userName.setText(username);
 
         // Main layout
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        initWeatherData();
-        recyclerViewAdapter = new RecyclerViewAdapter(weatherDataList, FrontActivity.this);
+        initWeatherData();          //获取用户关注节点
 
+        recyclerViewAdapter = new RecyclerViewAdapter(weatherDataList, FrontActivity.this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -129,24 +142,24 @@ public class FrontActivity extends AppCompatActivity {
                         // 已经在该页面中
                         break;
                     case R.id.list_navigation_menu_item:
-                        Intent intentl = new Intent(FrontActivity.this, ListActivity.class);
-                        intentl.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intentl);
+                        Intent intentL = new Intent(FrontActivity.this, ListActivity.class);
+                        intentL.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intentL);
                         break;
                     case R.id.map_navigation_menu_item:
-                        Intent intentm = new Intent(FrontActivity.this, MapActivity.class);
-                        intentm.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intentm);
+                        Intent intentM = new Intent(FrontActivity.this, MapActivity.class);
+                        intentM.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intentM);
                         break;
                     case R.id.community_navigation_menu_item:
-                        Intent intentc = new Intent(FrontActivity.this, CommunityActivity.class);
-                        intentc.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intentc);
+                        Intent intentC = new Intent(FrontActivity.this, CommunityActivity.class);
+                        intentC.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intentC);
                         break;
                     case R.id.setting_navigation_menu_item:
-                        Intent intents = new Intent(FrontActivity.this, SettingActivity.class);
-                        intents.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intents);
+                        Intent intentS = new Intent(FrontActivity.this, SettingActivity.class);
+                        intentS.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intentS);
                         break;
                     default:
                         break;
@@ -166,7 +179,6 @@ public class FrontActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
-
     }
 
 }

@@ -42,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.cityName.setText(weatherDatas.get(position).getCityName());
         holder.code.setImageResource(weatherDatas.get(position).getCode());
         holder.aqi.setText(weatherDatas.get(position).getAqi() + "");
-        holder.qlty.setText(weatherDatas.get(position).getQlty());
+        holder.qlty.setText(weatherDatas.get(position).getQuality());
         holder.update.setText(weatherDatas.get(position).getUpdate());
         holder.pm2_5.setText(weatherDatas.get(position).getPm25() + "");
         holder.pm10.setText(weatherDatas.get(position).getPm10() + "");

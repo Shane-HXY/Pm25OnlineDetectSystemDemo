@@ -25,11 +25,7 @@
             android:value="b4d47ba9fa4a03ea3b323386756d409c" />
 
         <activity android:name=".activity.FrontActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".activity.SearchActivity" />
@@ -57,7 +53,13 @@
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.UserActivity" />
-        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.LoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

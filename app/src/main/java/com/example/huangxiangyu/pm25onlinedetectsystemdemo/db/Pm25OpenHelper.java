@@ -54,19 +54,17 @@ public class Pm25OpenHelper extends SQLiteOpenHelper {
     public static final String CREATE_USER = "create table User ("
             + "id integer primary key autoincrement, "
             + "user_name text, "
-            + "user_password text, "
-            + "email text, "
-            + "alarm integer)";
+            + "user_password text)";
 
 
     /**
      * WeatherData表建表语句
      */
-    public static final String CREATE_WEATHERDATA = "create table WeatherData ("
+    public static final String CREATE_WEATHER_DATA = "create table WeatherData ("
             + "id integer primary key autoincrement, "
             + "city_id text, "
             + "city_name text, "
-            + "update text, "
+            + "update_time text, "
             + "aqi integer, "
             + "pm25 real, "
             + "pm10 real, "
@@ -74,7 +72,7 @@ public class Pm25OpenHelper extends SQLiteOpenHelper {
             + "no2 real, "
             + "co real, "
             + "o3 real, "
-            + "qlty real, "
+            + "quality real, "
             + "tmp real, "
             + "hum real, "
             + "code integer)";
@@ -90,8 +88,8 @@ public class Pm25OpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_CITY);        //创建City表
         sqLiteDatabase.execSQL(CREATE_COUNTY);      //创建County表
         sqLiteDatabase.execSQL(CREATE_NODE);        //创建Node表
-        //sqLiteDatabase.execSQL(CREATE_USER);        //创建User表  考虑再三决定不添加User表
-        sqLiteDatabase.execSQL(CREATE_WEATHERDATA); //创建WeatherData表
+        sqLiteDatabase.execSQL(CREATE_USER);        //创建User表
+        sqLiteDatabase.execSQL(CREATE_WEATHER_DATA); //创建WeatherData表
     }
 
     @Override

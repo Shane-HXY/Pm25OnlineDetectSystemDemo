@@ -84,6 +84,20 @@ public class Utility {
         }
         return false;
     }
+    /**
+     * 解析和处理服务器返回的节点\城市信息,并将解析出的数据存储到本地
+     */
+    public static boolean handleNodesResponse(Pm25DB pm25DB, String response) {
+        if (!TextUtils.isEmpty(response)) {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONArray jsonArray = jsonObject.getJSONArray("HeWeather data service 3.0");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 
     /**
      * 解析服务器返回的JSON数据,并将解析出的数据存储到本地
@@ -124,10 +138,8 @@ public class Utility {
             //
             savePm25Info(context, cityName, loc_update, aqi, co, no2, o3, pm10, pm25, quality, so2, tmp, hum);
 //            savePm25Info2(context, cityName, loc_update, tmp, hum);
-            Log.i("Tag", "ffffffxxxxxxx");
         } catch (Exception e) {
             e.printStackTrace();
-            Log.i("Tag", "44444444rrrrrrrrr");
         }
     }
 
@@ -159,7 +171,6 @@ public class Utility {
         editor.putString("so2", so2);
         editor.putString("tmp", tmp);
         editor.putString("hum", hum);
-        Log.i("Tag", "0000000XXXXXXXX");
         editor.commit();
     }
 
